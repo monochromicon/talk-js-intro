@@ -20,6 +20,12 @@ The addition operator either performs string concatenation or numeric addition.
 
 Take away: don't add not numbers.
 
+```js
+0 >= null
+0 == null
+0 > null
+```
+
 ## Topics
 
 - do not thy non-numbers add
