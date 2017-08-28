@@ -31,12 +31,12 @@ Take away: don't add not numbers.
 
 ## Truthiness
 
-Truthiness is the process of simplifying any value to `true` or `false`, as in `if` statements.
+Truthiness is the process of simplifying any value to `true` or `false`, like during `if` statements.
 
 ```js
+Boolean(false)
 Boolean(0)
 Boolean(-0)
-Boolean(false)
 Boolean('')
 Boolean(null)
 Boolean(undefined)
