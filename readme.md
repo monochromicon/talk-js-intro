@@ -218,6 +218,6 @@ This is where I want to fill you my opinions.
 
 Never stop learning and write code in peace.
 
-|![](https://github.com/maccelerated.png?size=100)|
+|[![](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|
 |---|
 |[@maccelerated](https://github.com/maccelerated)|
