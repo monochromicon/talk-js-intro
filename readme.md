@@ -1,41 +1,64 @@
 # JavaScript Introduction
 > It'll only sting for a moment.
 
-## wat
-
-```js
-{} + []
-[] + {}
-[] + []
-```
-
-Here's a hint.
-
-```js
-[] + [] + {}
-'i am a ' + {}
-```
-
-The addition operator either performs string concatenation or numeric addition.
-
-Take away: don't add not numbers.
-
 ```js
 0 >= null
 0 == null
 0 > null
 ```
 
+JavaScript's flexibility will hurt to adapt to. But it is not a bad thing.
+
+> I also have grown to like the prototypical nature of JavaScript and other prototypical languages like Lua.  I’ve always been a big fan of statically typed languages, and I still am, but I can also now appreciate some of the patterns that only a prototypical language allows which can really allow you to do quite a bit with just a little code.
+>
+> [John Sonmez, "I Was Wrong About JavaScript and Responsive Design"](https://simpleprogrammer.com/2013/12/09/wrong-javascript-responsive-design/) in Dec 2013
+
+And even better said:
+
+> > “Whilst not conclusive, the lack of evidence in the charts that more advanced type languages are going to save us from writing bugs is very disturbing.” 
+> >
+> > Daniel Lebrero, “The Broken Promise of Static Typing”
+>
+> [Eric Elliott, "The Shocking Secret About Static Types"](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3) in Jun 2016
+
 ## Topics
 
-- do not thy non-numbers add
-- truthiness
-- triple equals
-- template strings
-- what is this
-- classes
+Important topics for the future.
 
+- [ ] project directory structure
+- [ ] bundling JS
+- [ ] ecmascript 2015/2016/2017
+- [ ] web apps and react/vdom
+- [ ] typescript
+
+This intro will only discuss language quirks.
+
+- [x] addition operator
+- [x] truthiness
+- [x] triple equals
+- [x] template strings
+- [x] this
+- [x] not using classes
+
+---
+## Addition Operator
+> Do not thy non-numbers add.
+
+```js
+{} + []
+[] + {}
+[] + []
+[] + [] + {}
+'i am a ' + {}
+```
+
+The addition operator either performs string concatenation or numeric addition.
+
+Take away: don't add non-numbers.
+
+---
 ## Truthiness
+> Existence is truth.
 
 Truthiness is the process of simplifying any value to `true` or `false`, like during `if` statements.
 
@@ -88,7 +111,9 @@ function print (msg) {
 }
 ```
 
+---
 ## Triple Equals
+> Strict equivalence does not strictly equal loose equivalence.
 
 `==` in JS is not the same as `==` in any other language.
 
@@ -98,7 +123,9 @@ All you should know about `==` is that it will go out of its way to make the lef
 
 ![](6BYGcfx.jpg)
 
+---
 ## Template Strings
+> Just use them please.
 
 If you shouldn't use the addition operator to build strings, how should you?
 
@@ -107,7 +134,9 @@ const thing = 'message'
 `this is my ${thing}`
 ```
 
-## Functions and Binding
+---
+## Functions
+> What is this?
 
 ```js
 function fn () {
@@ -134,7 +163,9 @@ const fn2 = obj.another.bind(obj)
 a2() // obj returns
 ```
 
+---
 ## Classes
+> Just because it is familiar does not mean it is better.
 
 ```js
 class Foo {
@@ -155,6 +186,38 @@ f.inc()
 f.val
 ```
 
-Classes tend to cause anti-patterns in JS, though. The lack of strict typing lends to functional code, not object-oriented.
+Classes tend to cause anti-patterns in JS, though.
+
+- The lack of strict typing lends to functional code, not object-oriented.
+- Most all frameworks for JS save state and you don't need to.
+- The performance benefit isn't worth the technical debt and bloat.
+- Most of the time, the dev+user of your class will not get IntelliSense.
+- Tend to lead to articles titled "How to Use Classes and Sleep at Night"
 
 It is often better to simply have functions that accept all of the state they need as parameters. This will also make unit testing easier and better compartmentalize the codebase.
+
+```js
+const inc = val => val + 1
+const dec = val => val - 1
+
+const initVal = 0;
+const nextVal = inc(initVal);
+const lastVal = dec(nextVal);
+```
+
+---
+This is where I want to fill you my opinions.
+
+- Prefer `const` everywhere.
+- Don't use classes.
+- Don't use globals or namespaces.
+- Write functional code (accept a state, return a new state).
+- Use promises, streams, events, and callbacks, in that order.
+- Observables are good but I haven't used them.
+- https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript
+
+Never stop learning and write code in peace.
+
+|![](https://github.com/maccelerated.png?size=100)|
+|---|
+|[@maccelerated](https://github.com/maccelerated)|
