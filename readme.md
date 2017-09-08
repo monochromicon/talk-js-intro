@@ -7,7 +7,7 @@
 0 > null
 ```
 
-JavaScript's flexibility will hurt to adapt to. But it is not a bad thing.
+JavaScript's flexibility will hurt to adapt to, but it is not a bad thing.
 
 > I also have grown to like the prototypical nature of JavaScript and other prototypical languages like Lua.  I’ve always been a big fan of statically typed languages, and I still am, but I can also now appreciate some of the patterns that only a prototypical language allows which can really allow you to do quite a bit with just a little code.
 >
@@ -208,6 +208,7 @@ const lastVal = dec(nextVal);
 ---
 This is where I want to fill you my opinions.
 
+- Use a debugger.
 - Prefer `const` everywhere.
 - Don't use classes.
 - Don't use globals or namespaces.
