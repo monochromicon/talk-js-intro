@@ -38,7 +38,7 @@ This intro will only discuss language quirks.
 - [x] triple equals
 - [x] template strings
 - [x] this
-- [x] not using classes
+- [x] classes
 
 ---
 ## Addition Operator
@@ -191,7 +191,7 @@ Classes tend to cause anti-patterns in JS, though.
 - The lack of strict typing lends to functional code, not object-oriented.
 - Most all frameworks for JS save state and you don't need to.
 - The performance benefit isn't worth the technical debt and bloat.
-- Most of the time, the dev+user of your class will not get IntelliSense.
+- Most of the time, the dev user of your class will not get IntelliSense.
 - Tend to lead to articles titled "How to Use Classes and Sleep at Night"
 
 It is often better to simply have functions that accept all of the state they need as parameters. This will also make unit testing easier and better compartmentalize the codebase.
@@ -210,7 +210,7 @@ This is where I want to fill you my opinions.
 
 - Use a debugger.
 - Prefer `const` everywhere.
-- Don't use classes.
+- Don't use classes (except for React).
 - Don't use globals or namespaces.
 - Write functional code (accept a state, return a new state).
 - Use promises, streams, events, and callbacks, in that order.
@@ -219,6 +219,6 @@ This is where I want to fill you my opinions.
 
 Never stop learning and write code in peace.
 
-|[![](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|
+|[![@maccelerated](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|
 |---|
 |[@maccelerated](https://github.com/maccelerated)|
