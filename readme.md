@@ -1,5 +1,5 @@
 # JavaScript Introduction
-> It'll only sting for a moment.
+> It'll probably work and you will never realize what crimes you committed.
 
 ```js
 0 >= null
@@ -38,7 +38,7 @@ This intro will only discuss language quirks.
 - [x] triple equals
 - [x] template strings
 - [x] this
-- [x] classes
+- [x] prototypes
 
 ---
 ## Addition Operator
@@ -66,10 +66,10 @@ Truthiness is the process of simplifying any value to `true` or `false`, like du
 Boolean(false)
 Boolean(0)
 Boolean(-0)
+Boolean(NaN)
 Boolean('')
 Boolean(null)
 Boolean(undefined)
-Boolean(NaN)
 ```
 
 Everything else is truthy. This makes for some useful shortcuts, like when using the ternary operator to define a default value.
@@ -98,16 +98,25 @@ false && 'baz'
 In functions with optional parameters, a developer should prefer to test truthiness instead of type unless types need to be distinguished.
 
 ```js
-function print (msg) {
-  if (typeof msg !== 'undefined') {
-    console.info(msg)
+const current = {
+  name: '',
+  type: 'developer'
+}
+
+function getName(member) {
+  if (typeof member.name !== 'string') {
+    console.info(member.name)
+  } else {
+    console.info(`unnamed ${member.type}`)
   }
 }
 ```
 
+Better wrote as follows.
+
 ```js
-function print (msg) {
-  if (msg) console.info(msg)
+function getName(member) {
+  return member.name || `unnamed ${member.type}`
 }
 ```
 
@@ -144,23 +153,60 @@ function fn () {
 }
 ```
 
+```js
+var fn = function () {
+  console.info('called')
+}
+```
+
+```js
+const whereAmI = 'global'
+
+const fn = function () {
+  if (true) {
+    var nogood = 'function scoped'
+    let better = 'block scoped'
+  }
+  console.info('nogood', typeof nogood)
+  console.info('better', typeof better)
+}
+```
+
+```js
+function sum (list) {
+  return list.reduce(function (val, acc) {
+    return val + acc;
+  }, 0);
+}
+```
+
+```js
+const sum = list => list.reduce((v, a) => v + a, 0)
+```
+
 Normal stuff going on here. Ready for the not-normal stuff?
 
 ```js
-function another () {
-  return this
+const member = {
+  name: '',
+  getName () {
+    return this.name || 'unnamed member'
+  }
 }
 
-another() // global scope returns
+// try member.getName()
 
-const obj = {another}
-obj.another() // obj returns
+let getMemberName = member.getName;
 
-const fn1 = obj.another
-a1() // global scope returns
+// try getMemberName()
+```
 
-const fn2 = obj.another.bind(obj)
-a2() // obj returns
+What is `this`? `this` is set while functions are being called.
+
+```js
+getMemberName = member.getName.bind(member)
+
+getMemberName = () => member.getName()
 ```
 
 ---
@@ -188,11 +234,13 @@ f.val
 
 Classes tend to cause anti-patterns in JS, though.
 
-- The lack of strict typing lends to functional code, not object-oriented.
+- The aforementioned `this` problem especially shows itself in classes.
+- JS is loosely typed and lends to functional code, not object-oriented.
 - Most all frameworks for JS save state and you don't need to.
 - The performance benefit isn't worth the technical debt and bloat.
 - Most of the time, the dev user of your class will not get IntelliSense.
 - Tend to lead to articles titled "How to Use Classes and Sleep at Night"
+- The creator of JS says you shouldn't use them.
 
 It is often better to simply have functions that accept all of the state they need as parameters. This will also make unit testing easier and better compartmentalize the codebase.
 
@@ -217,7 +265,7 @@ This is where I want to fill you my opinions.
 - Observables are good but I haven't used them.
 - https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript
 
-Never stop learning and write code in peace.
+Never stop learning and write code for peace.
 
 |[![@maccelerated](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|
 |---|
