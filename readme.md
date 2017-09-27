@@ -81,6 +81,7 @@ Truthiness is the process of simplifying any value to `true` or `false`, like du
 `if` statements.
 
 ```js
+// All of these expressions return false
 Boolean(false)
 Boolean(0)
 Boolean(-0)
@@ -95,24 +96,25 @@ the ternary operator to define a default value.
 
 ```js
 const foo = ''
+foo ? foo : 'baz'  // foo is falsey, so return 'baz'
+
 const bar = 'bar'
-// if foo is truthy then return foo else return 'baz'
-foo ? foo : 'baz'
-// if bar is truthy then return bar else return 'baz'
-bar ? bar : 'baz'
+bar ? bar : 'baz'  // bar is truthy, so return 'bar'
 ```
 
 The Boolean operators work fine for `if` conditions, but also function as null-coalescing
 operators too.
 
 ```js
-true || 'baz'
-false || 'baz'
+// The OR operator returns the first value that is truthy, or the last if it can't find one
+true || 'baz'  //  true
+false || 'baz' // 'baz'
 ```
 
 ```js
-true && 'baz'
-false && 'baz'
+// The AND operator returns the first falsey value, or the last if it can't find one
+true && 'baz'  // 'baz'
+false && 'baz' // false
 ```
 
 In functions with optional parameters, a developer should prefer to test truthiness
@@ -124,6 +126,7 @@ const current = {
   type: 'developer'
 }
 
+// This is bad
 function getName(member) {
   if (typeof member.name !== 'string') {
     console.info(member.name)
@@ -131,13 +134,10 @@ function getName(member) {
     console.info(`unnamed ${member.type}`)
   }
 }
-```
 
-Better wrote as follows.
-
-```js
+// This is good
 function getName(member) {
-  return member.name || `unnamed ${member.type}`
+  return console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
 }
 ```
 
