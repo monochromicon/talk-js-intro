@@ -56,17 +56,22 @@ We'll cover these things and more in the future:
 ## Addition Operator
 > Do not thy non-numbers add.
 
+The addition operator comes from a very strange land.
+
 ```js
-{} + []
-[] + {}
-[] + []
-[] + [] + {}
-'i am a ' + {}
+{} + []          // returns 0
+[] + {}          // returns '[object Object]'
+[] + []          // returns ''
+[] + [] + {}     // returns '[object Object]'
+'i am a ' + {}   // returns 'i am a [object Object]'
 ```
 
-The addition operator either performs string concatenation or numeric addition.
+None of that came out as you would expect it, because the addition operator either
+performs string concatenation or numeric addition. It won't catch you when you try
+something weird, like adding arrays.
 
-Take away: don't add non-numbers.
+Take away: don't add non-numbers. We have a way to handle strings, which we'll touch
+on later.
 
 ---
 ## Truthiness
