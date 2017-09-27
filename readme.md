@@ -1,13 +1,16 @@
 # JavaScript Introduction
 > It'll probably work and you will never realize what crimes you committed.
 
+When people laugh at JavaScript, it's probably because of stuff like this:
+
 ```js
-0 >= null
-0 == null
-0 > null
+0 > null    // returns false
+0 == null   // also false
+0 >= null   // returns... true?
 ```
 
-JavaScript's flexibility will hurt to adapt to, but it is not a bad thing.
+JavaScript's flexibility will hurt to adapt to, but it is not a bad thing. A
+couple of testimonies:
 
 > I also have grown to like the prototypical nature of JavaScript and other
 > prototypical languages like Lua.  I’ve always been a big fan of statically typed
@@ -26,24 +29,28 @@ And even better said:
 >
 > [Eric Elliott, "The Shocking Secret About Static Types"](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3) in Jun 2016
 
+While JS is definitely a strange language, it simply relies on you, the programmer,
+to enforce your own set of rules. Once you get the hang of its quirks, and you understand
+some of its tools and best practices, writing in JavaScript becomes a pleasure.
+
 ## Topics
 
-Important topics for the future.
-
-- [ ] project directory structure
-- [ ] bundling JS
-- [ ] ecmascript 2015/2016/2017
-- [ ] web apps and react/vdom
-- [ ] typescript
-
-This intro will only discuss language quirks.
+This introduction will only discuss language quirks.
 
 - [x] addition operator
 - [x] truthiness
 - [x] triple equals
 - [x] template strings
 - [x] this
-- [x] prototypes
+- [ ] ~~prototypes~~ (need to go back over this)
+
+We'll cover these things and more in the future:
+
+- [ ] project directory structure
+- [ ] bundling JS
+- [ ] ecmascript 2015/2016/2017
+- [ ] web apps and react/vdom
+- [ ] typescript
 
 ---
 ## Addition Operator
