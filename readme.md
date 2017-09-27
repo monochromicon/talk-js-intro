@@ -9,13 +9,18 @@
 
 JavaScript's flexibility will hurt to adapt to, but it is not a bad thing.
 
-> I also have grown to like the prototypical nature of JavaScript and other prototypical languages like Lua.  I’ve always been a big fan of statically typed languages, and I still am, but I can also now appreciate some of the patterns that only a prototypical language allows which can really allow you to do quite a bit with just a little code.
+> I also have grown to like the prototypical nature of JavaScript and other
+> prototypical languages like Lua.  I’ve always been a big fan of statically typed
+> languages, and I still am, but I can also now appreciate some of the patterns
+> that only a prototypical language allows which can really allow you to do quite
+> a bit with just a little code.
 >
 > [John Sonmez, "I Was Wrong About JavaScript and Responsive Design"](https://simpleprogrammer.com/2013/12/09/wrong-javascript-responsive-design/) in Dec 2013
 
 And even better said:
 
-> > “Whilst not conclusive, the lack of evidence in the charts that more advanced type languages are going to save us from writing bugs is very disturbing.” 
+> > “Whilst not conclusive, the lack of evidence in the charts that more advanced
+> > type languages are going to save us from writing bugs is very disturbing.” 
 > >
 > > Daniel Lebrero, “The Broken Promise of Static Typing”
 >
@@ -60,7 +65,8 @@ Take away: don't add non-numbers.
 ## Truthiness
 > Existence is truth.
 
-Truthiness is the process of simplifying any value to `true` or `false`, like during `if` statements.
+Truthiness is the process of simplifying any value to `true` or `false`, like during
+`if` statements.
 
 ```js
 Boolean(false)
@@ -72,7 +78,8 @@ Boolean(null)
 Boolean(undefined)
 ```
 
-Everything else is truthy. This makes for some useful shortcuts, like when using the ternary operator to define a default value.
+Everything else is truthy. This makes for some useful shortcuts, like when using
+the ternary operator to define a default value.
 
 ```js
 const foo = ''
@@ -83,7 +90,8 @@ foo ? foo : 'baz'
 bar ? bar : 'baz'
 ```
 
-The Boolean operators work fine for `if` conditions, but also function as null-coalescing operators too.
+The Boolean operators work fine for `if` conditions, but also function as null-coalescing
+operators too.
 
 ```js
 true || 'baz'
@@ -95,7 +103,8 @@ true && 'baz'
 false && 'baz'
 ```
 
-In functions with optional parameters, a developer should prefer to test truthiness instead of type unless types need to be distinguished.
+In functions with optional parameters, a developer should prefer to test truthiness
+instead of type unless types need to be distinguished.
 
 ```js
 const current = {
@@ -126,11 +135,13 @@ function getName(member) {
 
 `==` in JS is not the same as `==` in any other language.
 
-Using `==` in JS is a loose comparison. `===` is the strict comparison similar to other languages.
+Using `==` in JS is a loose comparison. `===` is the strict comparison similar to
+other languages.
 
-All you should know about `==` is that it will go out of its way to make the left and right hand sides the same type. `==` should only be used for code golf.
+All you should know about `==` is that it will go out of its way to make the left
+and right hand sides the same type. `==` should only be used for code golf.
 
-![](6BYGcfx.jpg)
+![](trinity.jpg)
 
 ---
 ## Template Strings
@@ -242,7 +253,9 @@ Classes tend to cause anti-patterns in JS, though.
 - Tend to lead to articles titled "How to Use Classes and Sleep at Night"
 - The creator of JS says you shouldn't use them.
 
-It is often better to simply have functions that accept all of the state they need as parameters. This will also make unit testing easier and better compartmentalize the codebase.
+It is often better to simply have functions that accept all of the state they need
+as parameters. This will also make unit testing easier and better compartmentalize
+the codebase.
 
 ```js
 const inc = val => val + 1
