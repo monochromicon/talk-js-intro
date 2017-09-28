@@ -1,6 +1,8 @@
 # JavaScript Introduction
 > It'll probably work and you will never realize what crimes you committed.
 
+**For more complete information, see OSU CASS SDG's [JavaScript training document](https://github.com/osu-cass/JavaScriptTraining) I have been working on.**
+
 When people laugh at JavaScript, it's probably because of stuff like this:
 
 ```js
@@ -289,6 +291,7 @@ This is where I want to fill you my opinions.
 - Use promises, streams, events, and callbacks, in that order.
 - Observables are good but I haven't used them.
 - https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript
+- https://github.com/osu-cass/JavaScriptTraining
 
 Never stop learning and write code for peace.
 
