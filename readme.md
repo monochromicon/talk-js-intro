@@ -1,6 +1,8 @@
 # JavaScript Introduction
 > It'll probably work and you will never realize what crimes you committed.
 
+**For more complete information, see OSU CASS SDG's [JavaScript training document](https://github.com/osu-cass/JavaScriptTraining) I have been working on.**
+
 When people laugh at JavaScript, it's probably because of stuff like this:
 
 ```js
@@ -20,7 +22,7 @@ couple of testimonies:
 >
 > [John Sonmez, "I Was Wrong About JavaScript and Responsive Design"](https://simpleprogrammer.com/2013/12/09/wrong-javascript-responsive-design/) in Dec 2013
 
-And even better said:
+And a comment about loosely typed languages:
 
 > > “Whilst not conclusive, the lack of evidence in the charts that more advanced
 > > type languages are going to save us from writing bugs is very disturbing.” 
@@ -137,7 +139,7 @@ function getName(member) {
 
 // This is good
 function getName(member) {
-  return console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
+  console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
 }
 ```
 
@@ -289,6 +291,7 @@ This is where I want to fill you my opinions.
 - Use promises, streams, events, and callbacks, in that order.
 - Observables are good but I haven't used them.
 - https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript
+- https://github.com/osu-cass/JavaScriptTraining
 
 Never stop learning and write code for peace.
 
