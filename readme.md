@@ -20,7 +20,7 @@ couple of testimonies:
 >
 > [John Sonmez, "I Was Wrong About JavaScript and Responsive Design"](https://simpleprogrammer.com/2013/12/09/wrong-javascript-responsive-design/) in Dec 2013
 
-And even better said:
+And a comment about loosely typed languages:
 
 > > “Whilst not conclusive, the lack of evidence in the charts that more advanced
 > > type languages are going to save us from writing bugs is very disturbing.” 
@@ -137,7 +137,7 @@ function getName(member) {
 
 // This is good
 function getName(member) {
-  return console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
+  console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
 }
 ```
 
