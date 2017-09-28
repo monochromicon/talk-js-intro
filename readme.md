@@ -1,29 +1,50 @@
 # JavaScript Introduction
 > It'll probably work and you will never realize what crimes you committed.
 
+When people laugh at JavaScript, it's probably because of stuff like this:
+
 ```js
-0 >= null
-0 == null
-0 > null
+0 > null    // returns false
+0 == null   // also false
+0 >= null   // returns... true?
 ```
 
-JavaScript's flexibility will hurt to adapt to, but it is not a bad thing.
+JavaScript's flexibility will hurt to adapt to, but it is not a bad thing. A
+couple of testimonies:
 
-> I also have grown to like the prototypical nature of JavaScript and other prototypical languages like Lua.  I’ve always been a big fan of statically typed languages, and I still am, but I can also now appreciate some of the patterns that only a prototypical language allows which can really allow you to do quite a bit with just a little code.
+> I also have grown to like the prototypical nature of JavaScript and other
+> prototypical languages like Lua.  I’ve always been a big fan of statically typed
+> languages, and I still am, but I can also now appreciate some of the patterns
+> that only a prototypical language allows which can really allow you to do quite
+> a bit with just a little code.
 >
 > [John Sonmez, "I Was Wrong About JavaScript and Responsive Design"](https://simpleprogrammer.com/2013/12/09/wrong-javascript-responsive-design/) in Dec 2013
 
 And even better said:
 
-> > “Whilst not conclusive, the lack of evidence in the charts that more advanced type languages are going to save us from writing bugs is very disturbing.” 
+> > “Whilst not conclusive, the lack of evidence in the charts that more advanced
+> > type languages are going to save us from writing bugs is very disturbing.” 
 > >
 > > Daniel Lebrero, “The Broken Promise of Static Typing”
 >
 > [Eric Elliott, "The Shocking Secret About Static Types"](https://medium.com/javascript-scene/the-shocking-secret-about-static-types-514d39bf30a3) in Jun 2016
 
+While JS is definitely a strange language, it simply relies on you, the programmer,
+to enforce your own set of rules. Once you get the hang of its quirks, and you understand
+some of its tools and best practices, writing in JavaScript becomes a pleasure.
+
 ## Topics
 
-Important topics for the future.
+This introduction will only discuss language quirks.
+
+- [x] addition operator
+- [x] truthiness
+- [x] triple equals
+- [x] template strings
+- [x] this
+- [ ] ~~prototypes~~ (need to go back over this)
+
+We'll cover these things and more in the future:
 
 - [ ] project directory structure
 - [ ] bundling JS
@@ -31,38 +52,36 @@ Important topics for the future.
 - [ ] web apps and react/vdom
 - [ ] typescript
 
-This intro will only discuss language quirks.
-
-- [x] addition operator
-- [x] truthiness
-- [x] triple equals
-- [x] template strings
-- [x] this
-- [x] prototypes
-
 ---
 ## Addition Operator
 > Do not thy non-numbers add.
 
+The addition operator comes from a very strange land.
+
 ```js
-{} + []
-[] + {}
-[] + []
-[] + [] + {}
-'i am a ' + {}
+{} + []          // returns 0
+[] + {}          // returns '[object Object]'
+[] + []          // returns ''
+[] + [] + {}     // returns '[object Object]'
+'i am a ' + {}   // returns 'i am a [object Object]'
 ```
 
-The addition operator either performs string concatenation or numeric addition.
+None of that came out as you would expect it, because the addition operator either
+performs string concatenation or numeric addition. It won't catch you when you try
+something weird, like adding arrays.
 
-Take away: don't add non-numbers.
+Take away: don't add non-numbers. We have a way to handle strings, which we'll touch
+on later.
 
 ---
 ## Truthiness
 > Existence is truth.
 
-Truthiness is the process of simplifying any value to `true` or `false`, like during `if` statements.
+Truthiness is the process of simplifying any value to `true` or `false`, like during
+`if` statements.
 
 ```js
+// All of these expressions return false
 Boolean(false)
 Boolean(0)
 Boolean(-0)
@@ -72,30 +91,34 @@ Boolean(null)
 Boolean(undefined)
 ```
 
-Everything else is truthy. This makes for some useful shortcuts, like when using the ternary operator to define a default value.
+Everything else is truthy. This makes for some useful shortcuts, like when using
+the ternary operator to define a default value.
 
 ```js
 const foo = ''
+foo ? foo : 'baz'  // foo is falsey, so return 'baz'
+
 const bar = 'bar'
-// if foo is truthy then return foo else return 'baz'
-foo ? foo : 'baz'
-// if bar is truthy then return bar else return 'baz'
-bar ? bar : 'baz'
+bar ? bar : 'baz'  // bar is truthy, so return 'bar'
 ```
 
-The Boolean operators work fine for `if` conditions, but also function as null-coalescing operators too.
+The Boolean operators work fine for `if` conditions, but also function as null-coalescing
+operators too.
 
 ```js
-true || 'baz'
-false || 'baz'
+// The OR operator returns the first value that is truthy, or the last if it can't find one
+true || 'baz'  //  true
+false || 'baz' // 'baz'
 ```
 
 ```js
-true && 'baz'
-false && 'baz'
+// The AND operator returns the first falsey value, or the last if it can't find one
+true && 'baz'  // 'baz'
+false && 'baz' // false
 ```
 
-In functions with optional parameters, a developer should prefer to test truthiness instead of type unless types need to be distinguished.
+In functions with optional parameters, a developer should prefer to test truthiness
+instead of type unless types need to be distinguished.
 
 ```js
 const current = {
@@ -103,6 +126,7 @@ const current = {
   type: 'developer'
 }
 
+// This is bad
 function getName(member) {
   if (typeof member.name !== 'string') {
     console.info(member.name)
@@ -110,13 +134,10 @@ function getName(member) {
     console.info(`unnamed ${member.type}`)
   }
 }
-```
 
-Better wrote as follows.
-
-```js
+// This is good
 function getName(member) {
-  return member.name || `unnamed ${member.type}`
+  return console.info(member.name || `unnamed ${member.type}`) // Short-circuits if member.name is undefined
 }
 ```
 
@@ -126,11 +147,13 @@ function getName(member) {
 
 `==` in JS is not the same as `==` in any other language.
 
-Using `==` in JS is a loose comparison. `===` is the strict comparison similar to other languages.
+Using `==` in JS is a loose comparison. `===` is the strict comparison similar to
+other languages.
 
-All you should know about `==` is that it will go out of its way to make the left and right hand sides the same type. `==` should only be used for code golf.
+All you should know about `==` is that it will go out of its way to make the left
+and right hand sides the same type. `==` should only be used for code golf.
 
-![](6BYGcfx.jpg)
+![](trinity.jpg)
 
 ---
 ## Template Strings
@@ -242,7 +265,9 @@ Classes tend to cause anti-patterns in JS, though.
 - Tend to lead to articles titled "How to Use Classes and Sleep at Night"
 - The creator of JS says you shouldn't use them.
 
-It is often better to simply have functions that accept all of the state they need as parameters. This will also make unit testing easier and better compartmentalize the codebase.
+It is often better to simply have functions that accept all of the state they need
+as parameters. This will also make unit testing easier and better compartmentalize
+the codebase.
 
 ```js
 const inc = val => val + 1
