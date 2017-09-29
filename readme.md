@@ -73,7 +73,25 @@ performs string concatenation or numeric addition. It won't catch you when you t
 something weird, like adding arrays.
 
 Take away: don't add non-numbers. We have a way to handle strings, which we'll touch
-on later.
+on next.
+
+---
+## Template Strings
+> Just use them please.
+
+If you shouldn't use the addition operator to build strings, how should you?
+
+```js
+const thing = 'message'
+console.log(`this is my ${thing}`)  // 'this is my message'
+
+// Only ` (backticks) can fill in variables/expressions
+console.log('this is my ${thing}')  // 'this is my ${thing}'
+console.log("this is my ${thing}")  // 'this is my ${thing}'
+
+// Also useful for avoiding escaping
+console.log(`"You don't need to worry about apostrophes and quotation marks", he said.`)
+```
 
 ---
 ## Truthiness
@@ -177,30 +195,27 @@ and right hand sides the same type. `==` should only be used for code golf.
 ![](trinity.jpg)
 
 ---
-## Template Strings
-> Just use them please.
-
-If you shouldn't use the addition operator to build strings, how should you?
-
-```js
-const thing = 'message'
-`this is my ${thing}`
-```
-
----
 ## Functions
 > What is this?
 
 ```js
-function fn () {
+// Normal form
+function normal () {
   console.info('called')
 }
-```
+normal()   // 'called'
 
-```js
-var fn = function () {
+// Also valid
+var valid = function () {
   console.info('called')
 }
+valid()    // 'called'
+
+// Fat arrow
+var arrow = () => {
+  console.info('called')
+}
+arrow()    // 'called'
 ```
 
 ```js
@@ -213,44 +228,53 @@ const fn = function () {
   }
   console.info('nogood', typeof nogood)
   console.info('better', typeof better)
+  console.info('global', typeof whereAmI)
 }
+
+fn()   // nogood string
+       // better undefined
+       // global string
 ```
 
+Arrow functions allow us to write things more compact:
+
 ```js
+// With function definitions
 function sum (list) {
   return list.reduce(function (val, acc) {
     return val + acc;
   }, 0);
 }
+
+// Using arrow functions
+const sum2 = list => list.reduce((v, a) => v + a, 0)
 ```
 
-```js
-const sum = list => list.reduce((v, a) => v + a, 0)
-```
-
-Normal stuff going on here. Ready for the not-normal stuff?
+That was all the normal stuff. Ready for the not-normal stuff?
 
 ```js
 const member = {
-  name: '',
+  name: 'Rob',
   getName () {
-    return this.name || 'unnamed member'
+    return this.name
   }
 }
 
-// try member.getName()
+member.getName()   // 'Rob'
 
-let getMemberName = member.getName;
+let getMemberName = member.getName   // Copy member.getName to a variable
 
-// try getMemberName()
+getMemberName()    // undefined
 ```
 
 What is `this`? `this` is set while functions are being called.
 
 ```js
-getMemberName = member.getName.bind(member)
+getMemberName = member.getName.bind(member)  // Tell the variable to refer to member as this
+getMemberName()    // 'Rob'
 
-getMemberName = () => member.getName()
+getMemberName = () => member.getName()       // Accomplishes the same thing
+getMemberName()    // 'Rob'
 ```
 
 ---
