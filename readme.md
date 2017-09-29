@@ -295,9 +295,9 @@ class Foo {
 }
 
 const f = new Foo()
-f.val
+f.val     // 0
 f.inc()
-f.val
+f.val     // 1
 ```
 
 Classes tend to cause anti-patterns in JS, though.
