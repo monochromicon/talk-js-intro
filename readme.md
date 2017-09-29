@@ -96,10 +96,12 @@ the ternary operator to define a default value.
 
 ```js
 const foo = ''
-foo ? foo : 'baz'  // foo is falsey, so return 'baz'
+const bar = foo ? foo : 'baz' // if foo is truthy, return foo; if falsey, return 'baz'
+console.log(bar)              // 'baz'
 
-const bar = 'bar'
-bar ? bar : 'baz'  // bar is truthy, so return 'bar'
+const baz = 'baz'
+const qux = baz ? baz : 'qux' // if baz is truthy, return baz; if falsey, return 'qux'
+console.log(qux)              // 'baz'
 ```
 
 The Boolean operators work fine for `if` conditions, but also function as null-coalescing
@@ -146,6 +148,23 @@ function getName(member) {
 > Strict equivalence does not strictly equal loose equivalence.
 
 `==` in JS is not the same as `==` in any other language.
+
+```js
+// The == operator comes from the same land as the + operator
+false == ''   // true
+false === ''  // false
+
+0 == '0'      // true
+0 === '0'     // false
+
+// Same thing for != and !==
+false != ''   // false
+false !== ''  // true
+
+// It uses truthiness erratically
+false == ''   // true
+false == null // false
+```
 
 Using `==` in JS is a loose comparison. `===` is the strict comparison similar to
 other languages.
