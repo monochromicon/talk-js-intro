@@ -338,6 +338,6 @@ Some strongly suggested rules for modern JS development:
 
 Never stop learning, and write code for peace.
 
-|[![@maccelerated](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|![[@monochromicon](https://github.com/monochromicon.png?size=100)](https://github.com/monochromicon)|
+|[![@maccelerated](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|[![@monochromicon](https://github.com/monochromicon.png?size=100)](https://github.com/monochromicon)|
 |---|---|
 |[@maccelerated](https://github.com/maccelerated)|[@monochromicon](https://github.com/monochromicon)
