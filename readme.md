@@ -294,9 +294,9 @@ class Foo {
   }
 }
 
-const f = new Foo()
+const f = new Foo()  // Instantiate our defined class
 f.val     // 0
-f.inc()
+f.inc()   // Call method that modifies internal state
 f.val     // 1
 ```
 
@@ -307,7 +307,7 @@ Classes tend to cause anti-patterns in JS, though.
 - Most all frameworks for JS save state and you don't need to.
 - The performance benefit isn't worth the technical debt and bloat.
 - Most of the time, the dev user of your class will not get IntelliSense.
-- Tend to lead to articles titled "How to Use Classes and Sleep at Night"
+- Tend to lead to articles titled "[How to Use Classes and Sleep at Night](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4)"
 - The creator of JS says you shouldn't use them.
 
 It is often better to simply have functions that accept all of the state they need
@@ -315,28 +315,28 @@ as parameters. This will also make unit testing easier and better compartmentali
 the codebase.
 
 ```js
-const inc = val => val + 1
-const dec = val => val - 1
+const inc = val => val + 1     // Reusable, pure functions
+const dec = val => val - 1     // accept state, return new state
 
 const initVal = 0;
-const nextVal = inc(initVal);
-const lastVal = dec(nextVal);
+const nextVal = inc(initVal);  // Original state, initVal, is unmodified
+const lastVal = dec(nextVal);  // Original state, nextVal, is unmodified
 ```
 
 ---
-This is where I want to fill you my opinions.
+Some strongly suggested rules for modern JS development:
 
-- Use a debugger.
+- Use a debugger such as your browser's devtools, Node's included one, or VSCode.
 - Prefer `const` everywhere.
 - Don't use classes (except for React).
 - Don't use globals or namespaces.
-- Write functional code (accept a state, return a new state).
+- Write [functional code](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0) (accept a state, return a new state).
 - Use promises, streams, events, and callbacks, in that order.
 - Observables are good but I haven't used them.
 - https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript
 - https://github.com/osu-cass/JavaScriptTraining
 
-Never stop learning and write code for peace.
+Never stop learning, and write code for peace.
 
 |[![@maccelerated](https://github.com/maccelerated.png?size=100)](https://github.com/maccelerated)|
 |---|
